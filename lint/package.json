@@ -1,0 +1,48 @@
+{
+  "scripts": {
+    "tslint": "tsc --noEmit",
+    "tslint:watch": "tsc --noEmit -w",
+    "eslint": "eslint --fix --ext .js,.jsx,.ts,.tsx src",
+    "stylelint": "stylelint \"./src/**/*.{css,less}\" --fix",
+    "lint": "run-p tslint eslint stylelint",
+  },
+  "gitHooks": {
+    "pre-commit": "yarn tslint & lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ],
+    "src/**/*.{js,jsx,tsx,ts,json}": [
+        "eslint --fix --ext .{js|jsx|tsx|ts}"
+    ],
+    "src/**/*.{css,less}": [
+        "stylelint --fix .{css|less}"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "2.19.0",
+    "@typescript-eslint/parser": "2.19.0",
+    "eslint": "5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "stylelint": "11.0.0",
+    "stylelint-config-recess-order": "^2.0.3",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-order": "^3.0.1",
+    "lint-staged": "^10.0.7",
+    "prettier": "^2.2.0",
+  }
+}
