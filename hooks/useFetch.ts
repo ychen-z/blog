@@ -1,6 +1,6 @@
 /**
  * 数据请求hooks
- * @author 施阳 2019-9-20
+ * @timer  2019-9-20
  * @return {data, loading, dispatch}
  * data： 请求结果
  * loading：true-请求中 false-请求结束
