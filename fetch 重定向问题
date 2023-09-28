@@ -1,0 +1,15 @@
+## fetch 发起的重定向请求页面不刷新
+
+
++ 原因： 后端重定向后页面没有变，导致hash 不重载
++ 解决方法
+
+```
+if (res.redirected && params.url === LOGIN_PAGE_URL) {
+      console.log('Response was redirected to:', res.url);
+      const returnUrl = Cookies.get('returnUrl');
+      const hashIndex = returnUrl?.indexOf('#');
+      const newUrl = hashIndex !== -1 ? returnUrl.slice(hashIndex) : '';
+      window.location.replace(newUrl); // 使用新的 URL 跳转页面
+  }
+```
